@@ -1,0 +1,22 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build WinCalc (MSVC)",
+            "type": "shell",
+            "command": "${workspaceFolder}\\build.bat",
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "shell": {
+                    "executable": "C:/Windows/System32/cmd.exe",
+                    "args": ["/d", "/c"]
+                }
+            },
+            "problemMatcher": ["$msCompile"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
