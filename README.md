@@ -26,6 +26,9 @@ Enter numbers with the on-screen keypad. The calculator supports repeated equals
 
 ## Project Layout
 
-- `src/WinCalc.c` – Win32 GUI source code
+- `src/main.c` – Entry point, window registration, and message loop
+- `src/ui.c`, `src/ui.h` – Win32 control creation and routing user input to the calculator engine
+- `src/calculator.c`, `src/calculator.h` – Calculator state machine and arithmetic logic
+- `src/resource.h` – Control identifiers shared by the UI and resources
 - `build.bat` – Helper script that locates the Visual Studio toolchain and compiles the project
 - `.vscode/tasks.json` – VS Code build task configuration

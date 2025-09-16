@@ -15,5 +15,5 @@ if errorlevel 1 (
 )
 
 if not exist build mkdir build
-cl /std:c17 /W4 /EHsc /DUNICODE /D_UNICODE src\WinCalc.c user32.lib gdi32.lib /Fe:build\WinCalc.exe
+cl /std:c17 /W4 /EHsc /DUNICODE /D_UNICODE src\main.c src\ui.c src\calculator.c user32.lib gdi32.lib /Fe:build\WinCalc.exe
 exit /b %errorlevel%
