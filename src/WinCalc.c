@@ -174,15 +174,23 @@ static void HandleOperator(HWND hwndDlg, int operatorId)
 
 static void HandleEquals(HWND hwndDlg)
 {
-    if (g_calc.pendingOp == 0 && !g_calc.lastWasEquals) {
-        return; // Nothing to evaluate yet.
+    double current = GetDisplayValue();
+
+    if (g_calc.pendingOp == 0) {
+        if (!g_calc.lastWasEquals) {
+            g_calc.accumulator = current;
+            g_calc.lastOperand = current;
+        }
+        SetDisplayFromDouble(current);
+        g_calc.enteringNew = TRUE;
+        g_calc.lastWasEquals = TRUE;
+        g_calc.hasPending = FALSE;
+        return;
     }
 
-    double current = 0.0;
     if (g_calc.lastWasEquals) {
         current = g_calc.lastOperand;
     } else {
-        current = GetDisplayValue();
         g_calc.lastOperand = current;
     }
 
@@ -349,3 +357,4 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR lpCmdLin
 
     return (int)msg.wParam;
 }
+
